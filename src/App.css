@@ -30,6 +30,14 @@ body {
 .nav-link { color: #a8c8f0; text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
 .nav-link:hover { color: #fff; }
 
+/* Pi animation */
+.nav-anim {
+  display: inline-block;
+  transition: opacity 0.12s ease;
+}
+.nav-anim-in  { opacity: 1; }
+.nav-anim-out { opacity: 0; }
+
 /* Hero */
 .hero {
   background: linear-gradient(135deg, var(--blue) 0%, var(--blue-lt) 100%);
@@ -104,6 +112,7 @@ body {
 
 /* Contact */
 .contact-box {
+  margin: 0 auto;
   background: var(--light);
   border: 1px solid var(--border);
   border-radius: 6px;
