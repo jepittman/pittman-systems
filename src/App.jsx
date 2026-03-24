@@ -13,7 +13,6 @@ const SEQ = [
 
 function useAnimatedName() {
   const [pos, setPos] = useState(0)
-  const [fade, setFade] = useState(true)
 
   useEffect(() => {
     const frameIdx = SEQ[pos]
@@ -21,17 +20,13 @@ function useAnimatedName() {
     const delay = isEndpoint ? 2400 : 550
 
     const t = setTimeout(() => {
-      setFade(false)
-      setTimeout(() => {
-        setPos(p => (p + 1) % SEQ.length)
-        setFade(true)
-      }, 120)
+      setPos(p => (p + 1) % SEQ.length)
     }, delay)
 
     return () => clearTimeout(t)
   }, [pos])
 
-  return { name: PI_FRAMES[SEQ[pos]], fade }
+  return PI_FRAMES[SEQ[pos]]
 }
 
 // ── Components ────────────────────────────────────────────────────────────────
@@ -73,11 +68,11 @@ const services = [
 ]
 
 function Nav() {
-  const { name, fade } = useAnimatedName()
+  const name = useAnimatedName()
   return (
     <nav className="nav">
       <span className="nav-brand">
-        <span className={`nav-anim ${fade ? 'nav-anim-in' : 'nav-anim-out'}`}>{name}</span>
+        <span className="nav-anim">{name}</span>
         {' '}<span className="nav-brand-light">Systems LLC</span>
       </span>
       <a className="nav-link" href="mailto:james.elliott.pittman@gmail.com">Contact</a>

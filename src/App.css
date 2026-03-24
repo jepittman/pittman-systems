@@ -30,15 +30,12 @@ body {
 .nav-link { color: #a8c8f0; text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
 .nav-link:hover { color: #fff; }
 
-/* Pi animation — fixed width so "Systems LLC" never shifts */
+/* Pi animation - fixed width keeps Systems LLC anchored */
 .nav-anim {
   display: inline-block;
   min-width: 5.4rem;
   text-align: right;
-  transition: opacity 0.12s ease;
 }
-.nav-anim-in  { opacity: 1; }
-.nav-anim-out { opacity: 0; }
 
 /* Hero */
 .hero {
