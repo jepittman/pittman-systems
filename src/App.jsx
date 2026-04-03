@@ -92,11 +92,15 @@ const Icons = {
       <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" />
     </svg>
   ),
-  audit: (
+  ai: (
     <svg {...svgProps}>
-      <circle cx="11" cy="11" r="8" />
-      <line x1="21" y1="21" x2="16.65" y2="16.65" />
-      <path d="M8 8l2 3 4-5" />
+      <path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.8-2 3.4V11h3a3 3 0 0 1 3 3v1.6c1.2.6 2 1.9 2 3.4a4 4 0 0 1-8 0c0-1.5.8-2.8 2-3.4V14a1 1 0 0 0-1-1h-3v2.6c1.2.6 2 1.9 2 3.4a4 4 0 0 1-8 0c0-1.5.8-2.8 2-3.4V13H7a1 1 0 0 0-1 1v1.6C4.8 16.2 4 17.5 4 19a4 4 0 0 1-8 0c0-1.5.8-2.8 2-3.4V14a3 3 0 0 1 3-3h3V9.4C2.8 8.8 2 7.5 2 6a4 4 0 0 1 4-4" />
+    </svg>
+  ),
+  automation: (
+    <svg {...svgProps}>
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
     </svg>
   ),
 }
@@ -104,11 +108,12 @@ const Icons = {
 // ── Components ────────────────────────────────────────────────────────────────
 
 const skillGroups = [
-  { label: 'Architecture & Leadership', skills: ['Systems Architecture', 'Technical Leadership', 'Clean Architecture', 'Agile / Scrum'] },
-  { label: 'Languages & Frameworks', skills: ['Kotlin', 'Java', 'Android SDK', 'Jetpack Compose', 'RxJava'] },
-  { label: 'APIs & Backend', skills: ['API Design', 'REST APIs', 'GraphQL', 'Microservices', 'Retrofit'] },
-  { label: 'DevOps & Tools', skills: ['Docker', 'CI/CD', 'Cloud Integration', 'Git', 'Secure Coding'] },
-  { label: 'Patterns', skills: ['MVVM', 'MVP'] },
+  { label: 'Architecture & Leadership', skills: ['Systems Architecture', 'Technical Leadership', 'Event-Driven Architecture', 'Clean Architecture', 'Agile / Scrum'] },
+  { label: 'Languages & Frameworks', skills: ['Kotlin', 'Java', 'C#', 'Scala', 'JavaScript', 'HTML/CSS', 'Android SDK', 'Jetpack Compose', 'RxJava'] },
+  { label: 'APIs & Backend', skills: ['API Design', 'REST APIs', 'GraphQL', 'Microservices', 'SDK Development', 'Webhooks', 'Retrofit'] },
+  { label: 'AI & Machine Learning', skills: ['LLM Integration', 'Prompt Engineering', 'ML Pipelines', 'Bot Frameworks'] },
+  { label: 'DevOps & Tools', skills: ['Docker', 'CI/CD', 'Gradle', 'Cloud Integration', 'Git', 'Secure Coding'] },
+  { label: 'Patterns', skills: ['MVVM', 'MVP', 'MVI'] },
 ]
 
 const services = [
@@ -138,9 +143,14 @@ const services = [
     desc: 'Assessment and migration of legacy codebases and architectures to modern, maintainable systems.',
   },
   {
-    title: 'Code Review & Audits',
-    icon: Icons.audit,
-    desc: 'In-depth technical audits of existing systems for quality, security vulnerabilities, and performance bottlenecks.',
+    title: 'AI & ML Integration',
+    icon: Icons.ai,
+    desc: 'Integration of machine learning models, LLM-powered features, and intelligent automation into existing products and workflows.',
+  },
+  {
+    title: 'Automation & Workflows',
+    icon: Icons.automation,
+    desc: 'Event-driven architectures, CI/CD pipeline design, and process automation to eliminate manual bottlenecks and accelerate delivery.',
   },
 ]
 
@@ -167,9 +177,10 @@ function Hero() {
         <h1 className="hero-name">James Pittman</h1>
         <p className="hero-subtitle">Solutions Architect &amp; Technology Consultant</p>
         <p className="hero-desc">
-          10+ years designing scalable software systems, leading engineering teams, and delivering
-          production-grade applications for enterprise and government clients. Available for
-          architecture consulting, technical leadership, and development engagements.
+          12+ years designing scalable software architectures, automated systems, and API integrations
+          for enterprise clients. Proven track record building event-driven workflows, ML-powered
+          tooling, and cross-platform system integrations. Available for architecture consulting,
+          technical leadership, and development engagements.
         </p>
         <a className="hero-cta" href="mailto:james.elliott.pittman@gmail.com">Get in Touch</a>
       </div>
@@ -223,13 +234,18 @@ function About() {
       <h2 className="section-title">About</h2>
       <p className="about-text">
         Pittman Systems LLC is a technology consulting practice based in Ocean Springs, Mississippi,
-        founded by James Pittman — a solutions architect and senior software engineer with over a
-        decade of experience designing and delivering complex systems for enterprise and government clients.
+        founded by James Pittman — a solutions architect and senior software engineer with over 12 years
+        of experience designing and delivering automated systems, API integrations, and ML-powered
+        solutions for enterprise and government clients.
       </p>
       <p className="about-text">
         Past engagements include lead architecture and development roles at Sherwin-Williams, GEICO,
-        Charter Communications, and Deloitte Consulting, spanning consumer mobile, enterprise tooling,
-        and government applications.
+        Angi, Charter Communications, and Deloitte Consulting — spanning consumer mobile,
+        AI-powered products, enterprise tooling, and government applications for clients including
+        the Department of Homeland Security.
+      </p>
+      <p className="about-text about-education">
+        <strong>Education:</strong> BS in Computer Science, University of Southern Mississippi
       </p>
     </section>
   )
