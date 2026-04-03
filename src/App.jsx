@@ -52,6 +52,31 @@ function useReveal() {
   return { ref, className: visible ? 'reveal visible' : 'reveal' }
 }
 
+// ── Social / hero icons ──────────────────────────────────────────────────────
+
+const heroIconProps = { viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round', width: 18, height: 18 }
+
+const SocialIcons = {
+  github: (
+    <svg {...heroIconProps}>
+      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+    </svg>
+  ),
+  linkedin: (
+    <svg {...heroIconProps}>
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect x="2" y="9" width="4" height="12" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  ),
+  mail: (
+    <svg {...heroIconProps}>
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="M22 7l-10 7L2 7" />
+    </svg>
+  ),
+}
+
 // ── Icons (24x24 stroke-based SVGs) ──────────────────────────────────────────
 
 const svgProps = { viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round', className: 'card-icon' }
@@ -104,6 +129,16 @@ const Icons = {
     </svg>
   ),
 }
+
+// ── Data ─────────────────────────────────────────────────────────────────────
+
+const clients = ['GEICO', 'Sherwin-Williams', 'Charter Communications', 'Deloitte', 'Angi']
+
+const socialLinks = [
+  { label: 'GitHub', icon: SocialIcons.github, href: 'https://github.com/jamesPittmanII' },
+  { label: 'LinkedIn', icon: SocialIcons.linkedin, href: 'https://www.linkedin.com/in/james-pittman-ii/' },
+  { label: 'Email', icon: SocialIcons.mail, href: 'mailto:james.elliott.pittman@gmail.com' },
+]
 
 // ── Components ────────────────────────────────────────────────────────────────
 
@@ -174,15 +209,41 @@ function Hero() {
   return (
     <div className="hero">
       <div className={`hero-inner ${loaded ? 'hero-loaded' : ''}`}>
-        <h1 className="hero-name">James Pittman</h1>
-        <p className="hero-subtitle">Solutions Architect &amp; Technology Consultant</p>
-        <p className="hero-desc">
-          12+ years designing scalable software architectures, automated systems, and API integrations
-          for enterprise clients. Proven track record building event-driven workflows, ML-powered
-          tooling, and cross-platform system integrations. Available for architecture consulting,
-          technical leadership, and development engagements.
-        </p>
-        <a className="hero-cta" href="mailto:james.elliott.pittman@gmail.com">Get in Touch</a>
+        <div className="hero-columns">
+          <div className="hero-left">
+            <span className="hero-badge">
+              <span className="hero-badge-dot" />
+              Available for engagements
+            </span>
+            <h1 className="hero-name">James Pittman</h1>
+            <p className="hero-tagline">I architect systems that scale.</p>
+            <p className="hero-desc">
+              12+ years designing scalable software architectures, automated systems, and API integrations
+              for enterprise clients. Proven track record building event-driven workflows, ML-powered
+              tooling, and cross-platform system integrations.
+            </p>
+            <div className="hero-pills">
+              {socialLinks.map(l => (
+                <a className="hero-pill" key={l.label} href={l.href} target={l.href.startsWith('http') ? '_blank' : undefined} rel={l.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
+                  {l.icon}
+                  {l.label}
+                </a>
+              ))}
+            </div>
+          </div>
+          <div className="hero-right">
+            <p className="hero-clients-label">Trusted by teams at</p>
+            {clients.map(c => (
+              <p className="hero-client" key={c}>{c}</p>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="hero-scroll">
+        <span className="hero-scroll-text">SCROLL</span>
+        <svg className="hero-scroll-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="20" height="20">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
       </div>
     </div>
   )
@@ -195,7 +256,7 @@ function Services() {
       <h2 className="section-title">Services</h2>
       <div className="grid">
         {services.map((s, i) => (
-          <div className="card" key={s.title} style={{ transitionDelay: `${i * 80}ms` }}>
+          <div className="card" key={s.title} style={{ transitionDelay: `${i * 100}ms` }}>
             {s.icon}
             <h3 className="card-title">{s.title}</h3>
             <p className="card-desc">{s.desc}</p>
@@ -213,7 +274,7 @@ function Skills() {
       <section className="section" {...reveal}>
         <h2 className="section-title">Technical Skills</h2>
         {skillGroups.map((g, gi) => (
-          <div className="skill-group" key={g.label}>
+          <div className="skill-group" key={g.label} style={{ transitionDelay: `${gi * 60}ms` }}>
             <p className="skill-group-label">{g.label}</p>
             <div className="tags">
               {g.skills.map((s, si) => (
