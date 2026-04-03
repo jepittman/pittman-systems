@@ -31,7 +31,7 @@ function useAnimatedName() {
 
 // ── Scroll reveal ────────────────────────────────────────────────────────────
 
-function useReveal() {
+function useReveal(baseClass = '') {
   const prefersReduced = typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const ref = useRef(null)
@@ -49,7 +49,8 @@ function useReveal() {
     return () => obs.disconnect()
   }, [prefersReduced])
 
-  return { ref, className: visible ? 'reveal visible' : 'reveal' }
+  const reveal = visible ? 'reveal visible' : 'reveal'
+  return { ref, className: baseClass ? `${baseClass} ${reveal}` : reveal }
 }
 
 // ── Social / hero icons ──────────────────────────────────────────────────────
@@ -250,9 +251,9 @@ function Hero() {
 }
 
 function Services() {
-  const reveal = useReveal()
+  const reveal = useReveal('section')
   return (
-    <section className="section" {...reveal}>
+    <section {...reveal}>
       <h2 className="section-title">Services</h2>
       <div className="grid">
         {services.map((s, i) => (
@@ -268,10 +269,10 @@ function Services() {
 }
 
 function Skills() {
-  const reveal = useReveal()
+  const reveal = useReveal('section')
   return (
     <div className="alt-band">
-      <section className="section" {...reveal}>
+      <section {...reveal}>
         <h2 className="section-title">Technical Skills</h2>
         {skillGroups.map((g, gi) => (
           <div className="skill-group" key={g.label} style={{ transitionDelay: `${gi * 60}ms` }}>
@@ -289,9 +290,9 @@ function Skills() {
 }
 
 function About() {
-  const reveal = useReveal()
+  const reveal = useReveal('section')
   return (
-    <section className="section" {...reveal}>
+    <section {...reveal}>
       <h2 className="section-title">About</h2>
       <p className="about-text">
         Pittman Systems LLC is a technology consulting practice based in Ocean Springs, Mississippi,
@@ -313,10 +314,10 @@ function About() {
 }
 
 function Contact() {
-  const reveal = useReveal()
+  const reveal = useReveal('section')
   return (
     <div className="alt-band">
-      <section className="section" {...reveal}>
+      <section {...reveal}>
         <h2 className="section-title">Contact</h2>
         <div className="contact-box">
           <p className="contact-desc">

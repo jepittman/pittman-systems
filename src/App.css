@@ -101,7 +101,7 @@ body {
   background: linear-gradient(135deg, var(--blue) 0%, var(--blue-lt) 60%, #3a8fd4 100%);
   color: #fff;
   min-height: 100svh;
-  padding: 5rem 2rem 4rem;
+  padding: 5rem clamp(2rem, 5vw, 6rem) 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -262,7 +262,7 @@ body {
 .section {
   max-width: 880px;
   margin: 0 auto;
-  padding: 3.5rem 2rem;
+  padding: 3.5rem clamp(2rem, 5vw, 6rem);
 }
 .section-title {
   font-size: 1.45rem;
@@ -398,7 +398,7 @@ body {
 
 /* ── Mobile ─────────────────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
-  .hero { padding: 6rem 1.2rem 4rem; min-height: 100svh; }
+  .hero { padding: 6rem 1.5rem 4rem; min-height: 100svh; }
   .hero-columns { flex-direction: column; gap: 2.5rem; align-items: flex-start; }
   .hero-right {
     text-align: left;
@@ -416,7 +416,7 @@ body {
   .nav-brand { font-size: 0.95rem; }
   .nav-anim { min-width: 4.8rem; }
 
-  .section { padding: 2.5rem 1.2rem; }
+  .section { padding: 2.5rem 1.5rem; }
   .section-title { font-size: 1.25rem; }
 
   .grid { grid-template-columns: 1fr; gap: 1rem; }
